@@ -1,191 +1,301 @@
-import React, {Component} from 'react';  
+import React, { Component } from "react";
 
 /* Import Components */
-import CheckBox from '../components/CheckBox';  
-import Input from '../components/Input';  
-import TextArea from '../components/TextArea';  
-import Select from '../components/Select';
-import Button from '../components/Button'
+import Input from "../components/Input";
+import Select from "../components/Select";
+import Button from "../components/Button";
 
-class FormContainer extends Component {  
+class FormContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      newUser: {
-        name: '',
-        age: '',
-        gender: '',
-        skills: [],
-        about: ''
-
+      newBRC: {
+        firstName: "",
+        lastName: "",
+        gender: "",
+        streetAddress: "",
+        city: "",
+        stateChoice: "",
+        zipCode: "",
+        phoneNumber: "",
+        emailAddress: ""
       },
-
-      genderOptions: ['Male', 'Female', 'Others'],
-      skillOptions: ['Programming', 'Development', 'Design', 'Testing']
-
-    }
-    this.handleTextArea = this.handleTextArea.bind(this);
-    this.handleAge = this.handleAge.bind(this);
-    this.handleFullName = this.handleFullName.bind(this);
+      genderOptions: ["Male", "Female", "Other"]
+    };
+    this.handleFirstName = this.handleFirstName.bind(this);
+    this.handleLastName = this.handleLastName.bind(this);
+    this.handleGender = this.handleGender.bind(this);
+    this.handleStreetAddress = this.handleStreetAddress.bind(this);
+    this.handleCity = this.handleCity.bind(this);
+    this.handleStateChoice = this.handleStateChoice.bind(this);
+    this.handleZipCode = this.handleZipCode.bind(this);
+    this.handlePhoneNumber = this.handlePhoneNumber.bind(this);
+    this.handleEmailAddress = this.handleEmailAddress.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleCheckBox = this.handleCheckBox.bind(this);
-    this.handleInput = this.handleInput.bind(this);
   }
 
   /* This lifecycle hook gets executed when the component mounts */
-  
-  handleFullName(e) {
-   let value = e.target.value;
-   this.setState( prevState => ({ newUser : 
-        {...prevState.newUser, name: value
-        }
-      }), () => console.log(this.state.newUser))
-  }
 
-  handleAge(e) {
-       let value = e.target.value;
-   this.setState( prevState => ({ newUser : 
-        {...prevState.newUser, age: value
-        }
-      }), () => console.log(this.state.newUser))
-  }
-
-  handleInput(e) {
-       let value = e.target.value;
-       let name = e.target.name;
-   this.setState( prevState => ({ newUser : 
-        {...prevState.newUser, [name]: value
-        }
-      }), () => console.log(this.state.newUser))
-  }
-
-  handleTextArea(e) {
-    console.log("Inside handleTextArea");
+  handleFirstName(e) {
     let value = e.target.value;
-    this.setState(prevState => ({
-      newUser: {
-        ...prevState.newUser, about: value
-      }
-      }), ()=>console.log(this.state.newUser))
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          firstName: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
   }
 
+  handleLastName(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          lastName: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
 
-  handleCheckBox(e) {
+  handleGender(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          gender: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
 
-    const newSelection = e.target.value;
-    let newSelectionArray;
+  handleStreetAddress(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          streetAddress: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
 
-    if(this.state.newUser.skills.indexOf(newSelection) > -1) {
-      newSelectionArray = this.state.newUser.skills.filter(s => s !== newSelection)
-    } else {
-      newSelectionArray = [...this.state.newUser.skills, newSelection];
-    }
+  handleCity(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          city: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
 
-      this.setState( prevState => ({ newUser:
-        {...prevState.newUser, skills: newSelectionArray }
-      })
-      )
-}
+  handleStateChoice(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          stateChoice: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
+
+  handleZipCode(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          zipCode: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
+
+  handlePhoneNumber(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          phoneNumber: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
+
+  handleEmailAddress(e) {
+    let value = e.target.value;
+    this.setState(
+      prevState => ({
+        newBRC: {
+          ...prevState.newBRC,
+          emailAddress: value
+        }
+      }),
+      () => console.log(this.state.newBRC)
+    );
+  }
+
+  handleClearForm(e) {
+    e.preventDefault();
+    this.setState({
+      newBRC: {
+        firstName: "",
+        lastName: "",
+        gender: "",
+        streetAddress: "",
+        city: "",
+        stateChoice: "",
+        zipCode: "",
+        phoneNumber: "",
+        emailAddress: ""
+      }
+    });
+  }
 
   handleFormSubmit(e) {
     e.preventDefault();
-    let userData = this.state.newUser;
+    let BRCData = this.state.newBRC;
 
-    fetch('http://example.com',{
-        method: "POST",
-        body: JSON.stringify(userData),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-      }).then(response => {
-        response.json().then(data =>{
-          console.log("Successful" + data);
-        })
-    })
-  }   
-
-  handleClearForm(e) {
-  
-      e.preventDefault();
-      this.setState({ 
-        newUser: {
-          name: '',
-          age: '',
-          gender: '',
-          skills: [],
-          about: ''
-        },
-      })
+    fetch("https://army.azure-api.net/brc-forms/BRC_form_to_accession_info", {
+      method: "POST",
+      body: JSON.stringify(BRCData),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Ocp-Apim-Subscription-Key": "ea4dfd93562647108a7222cdb338fe9b"
+      }
+    }).then(response => {
+      response.json().then(data => {
+        console.log("Successful" + data);
+      });
+    });
   }
 
   render() {
     return (
-    
-        <form className="container-fluid" onSubmit={this.handleFormSubmit}>
-       
-            <Input inputType={'text'}
-                   title= {'Full Name'} 
-                   name= {'name'}
-                   value={this.state.newUser.name} 
-                   placeholder = {'Enter your name'}
-                   handleChange = {this.handleInput}
-                   
-                   /> {/* Name of the user */}
-        
-          <Input inputType={'number'} 
-                name={'age'}
-                 title= {'Age'} 
-                 value={this.state.newUser.age} 
-                placeholder = {'Enter your age'}
-                 handleChange={this.handleAge} /> {/* Age */} 
-
-
-          <Select title={'Gender'}
-                  name={'gender'}
-                  options = {this.state.genderOptions} 
-                  value = {this.state.newUser.gender}
-                  placeholder = {'Select Gender'}
-                  handleChange = {this.handleInput}
-                  /> {/* Age Selection */}
-          <CheckBox  title={'Skills'}
-                  name={'skills'}
-                  options={this.state.skillOptions}
-                  selectedOptions = { this.state.newUser.skills}
-                  handleChange={this.handleCheckBox}
-                   /> {/* Skill */}
-          <TextArea
-            title={'About you.'}
-            rows={10}
-            value={this.state.newUser.about}
-            name={'currentPetInfo'}
-            handleChange={this.handleTextArea}
-            placeholder={'Describe your past experience and skills'} />{/* About you */}
-
-          <Button 
-              action = {this.handleFormSubmit}
-              type = {'primary'} 
-              title = {'Submit'} 
-            style={buttonStyle}
-          /> { /*Submit */ }
-          
-          <Button 
-            action = {this.handleClearForm}
-            type = {'secondary'}
-            title = {'Clear'}
-            style={buttonStyle}
-          /> {/* Clear the form */}
-          
-        </form>
-  
+      <form className="container-fluid" onSubmit={this.handleFormSubmit}>
+        <Input
+          inputType={"text"}
+          title={"First Name"}
+          name={"firstName"}
+          value={this.state.newBRC.firstName}
+          placeholder={"Enter your first name"}
+          handleChange={this.handleFirstName}
+        />
+        {/* First Name of the user */}
+        <Input
+          inputType={"text"}
+          title={"Last Name"}
+          name={"lastName"}
+          value={this.state.newBRC.lastName}
+          placeholder={"Enter your last name"}
+          handleChange={this.handleLastName}
+        />
+        {/* Last Name of the user */}
+        <Select
+          title={"Gender"}
+          name={"gender"}
+          options={this.state.genderOptions}
+          value={this.state.newBRC.gender}
+          placeholder={"Select Gender"}
+          handleChange={this.handleGender}
+        />{" "}
+        {/* Gender Selection */}
+        <Input
+          inputType={"text"}
+          title={"Street Address"}
+          name={"streetAddress"}
+          value={this.state.newBRC.streetAddress}
+          placeholder={"Enter your street address"}
+          handleChange={this.handleStreetAddress}
+        />
+        {/* Street Address of the user */}
+        <Input
+          inputType={"text"}
+          title={"City"}
+          name={"city"}
+          value={this.state.newBRC.city}
+          placeholder={"Enter your city"}
+          handleChange={this.handleCity}
+        />
+        {/* City of the user */}
+        <Input
+          inputType={"text"}
+          title={"State"}
+          name={"state"}
+          value={this.state.newBRC.stateChoice}
+          placeholder={"Enter your state"}
+          handleChange={this.handleStateChoice}
+        />
+        {/* State of the user */}
+        <Input
+          inputType={"text"}
+          title={"Zip"}
+          name={"zip"}
+          value={this.state.newBRC.zipCode}
+          placeholder={"Enter your zip"}
+          handleChange={this.handleZipCode}
+        />
+        {/* Zip of the user */}
+        <Input
+          inputType={"text"}
+          title={"Phone Number"}
+          name={"phoneNumber"}
+          value={this.state.newBRC.phoneNumber}
+          placeholder={"Enter your phone number"}
+          handleChange={this.handlePhoneNumber}
+        />
+        {/* Phone Number of the user */}
+        <Input
+          inputType={"text"}
+          title={"Email Address"}
+          name={"emailAddress"}
+          value={this.state.newBRC.emailAddress}
+          placeholder={"Enter your email address"}
+          handleChange={this.handleEmailAddress}
+        />
+        {/* Email Address of the user */}
+        <Button
+          action={this.handleFormSubmit}
+          type={"primary"}
+          title={"Submit"}
+          style={buttonStyle}
+        />{" "}
+        {/*Submit */}
+        <Button
+          action={this.handleClearForm}
+          type={"secondary"}
+          title={"Clear"}
+          style={buttonStyle}
+        />{" "}
+        {/* Clear the form */}
+      </form>
     );
   }
 }
 
 const buttonStyle = {
-  margin : '10px 10px 10px 10px'
-}
+  margin: "10px 10px 10px 10px"
+};
 
 export default FormContainer;
