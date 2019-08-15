@@ -2,8 +2,9 @@
   "name": "demo-forms",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "https://army.azure-api.net",
   "dependencies": {
+    "axios": "^0.19.0",
     "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.1",

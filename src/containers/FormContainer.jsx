@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import Button from "../components/Button";
+import axios from "axios";
 
 const proxy = require("http-proxy-middleware");
 
@@ -179,22 +180,24 @@ class FormContainer extends Component {
     let BRCData = this.state.newBRC;
 
     fetch(
-      "https://army.azure-api.net/brc-forms/BRC_form_to_accession_info",
+      "https://cors-anywhere.herokuapp.com/https://army.azure-api.net/brc-forms/submit",
       {
         method: "POST",
         body: JSON.stringify(BRCData),
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
-          "Ocp-Apim-Subscription-Key": "ea4dfd93562647108a7222cdb338fe9b"
+          "Ocp-Apim-Subscription-Key": "ea4dfd93562647108a7222cdb338fe9b",
+          "Access-Control-Allow-Origin": "*"
         }
       },
       { mode: "no-cors" }
     ).then(response => {
-      response.json().then(data => {
-        console.log("Successful" + data);
+      response.json().then(BRCData => {
+        console.log("Successful" + BRCData);
       });
     });
+
+    this.handleClearForm(e);
   }
 
   render() {
