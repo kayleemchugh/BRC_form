@@ -5,6 +5,8 @@ import Input from "../components/Input";
 import Select from "../components/Select";
 import Button from "../components/Button";
 
+const proxy = require("http-proxy-middleware");
+
 class FormContainer extends Component {
   constructor(props) {
     super(props);
@@ -176,15 +178,19 @@ class FormContainer extends Component {
     e.preventDefault();
     let BRCData = this.state.newBRC;
 
-    fetch("https://army.azure-api.net/brc-forms/BRC_form_to_accession_info", {
-      method: "POST",
-      body: JSON.stringify(BRCData),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Ocp-Apim-Subscription-Key": "ea4dfd93562647108a7222cdb338fe9b"
-      }
-    }).then(response => {
+    fetch(
+      "https://army.azure-api.net/brc-forms/BRC_form_to_accession_info",
+      {
+        method: "POST",
+        body: JSON.stringify(BRCData),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Ocp-Apim-Subscription-Key": "ea4dfd93562647108a7222cdb338fe9b"
+        }
+      },
+      { mode: "no-cors" }
+    ).then(response => {
       response.json().then(data => {
         console.log("Successful" + data);
       });
